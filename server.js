@@ -6,7 +6,7 @@ import { nanoid } from 'nanoid';
 import Jwt from 'jsonwebtoken';
 import cors from 'cors'
 import admin from 'firebase-admin';
-import serviceAccountKey from "./blogging-website-ca8cc-firebase-adminsdk-qvp9e-c2a7c7c700.json" assert {type: 'json'}
+const serviceAccountKey = require('./blogging-website-ca8cc-firebase-adminsdk-qvp9e-c2a7c7c700.json');
 import { getAuth } from 'firebase-admin/auth';
 // import aws from 'aws-sdk';
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
