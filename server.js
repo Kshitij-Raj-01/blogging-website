@@ -6,8 +6,9 @@ import { nanoid } from 'nanoid';
 import Jwt from 'jsonwebtoken';
 import cors from 'cors'
 import admin from 'firebase-admin';
-import { readFileSync } from 'fs';
-const serviceAccountKey = JSON.parse(readFileSync(new URL('./blogging-website-ca8cc-firebase-adminsdk-qvp9e-c2a7c7c700.json', import.meta.url)));
+// import { readFileSync } from 'fs';
+// const serviceAccountKey = JSON.parse(readFileSync(new URL('./blogging-website-ca8cc-firebase-adminsdk-qvp9e-c2a7c7c700.json', import.meta.url)));
+const firebaseServiceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
 import { getAuth } from 'firebase-admin/auth';
 // import aws from 'aws-sdk';
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
@@ -24,7 +25,7 @@ const server = express();
 let PORT = 3000;
 
 admin.initializeApp({
-    credential: admin.credential.cert(serviceAccountKey)
+    credential: admin.credential.cert(firebaseServiceAccount)
 })
 
 let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; // regex for email
